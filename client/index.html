@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Websocket Client</title>
+  <script>
+    var socket = new WebSocket("ws://localhost:2345");
+    socket.onopen = function (event) {
+      socket.send("Can you hear me?");
+    };
+    socket.onmessage = function (event) {
+      var node = document.createElement("div");                 // Create a <li> node
+      var textnode = document.createTextNode(event.data);         // Create a text node
+      node.appendChild(textnode);
+      document.getElementsByTagName('body')[0].appendChild(node);  
+      console.log(event.data);
+    }
+  </script>
+</head>
+<body>
+</body>
+</html>
